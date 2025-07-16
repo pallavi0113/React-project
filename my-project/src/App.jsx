@@ -6,7 +6,8 @@
 // import { EventPropagation } from "./components/EventPropagation";
 
 // import { DerivedState } from "./components/DericedState";
-import { LiftingState } from "./components/LiftStateUp";
+// import { LiftingState } from "./components/LiftStateUp";
+import { ToggleSwitch } from "./components/projects/ToggleSwitch/ToggleSwitch";
 // import { State } from "./components/hooks/state";
 
 
@@ -21,7 +22,9 @@ export const App = () => {
   {/* < EventPropagation /> */}
   {/* <State /> */}
   {/* <DerivedState /> */}
-  <LiftingState />
+  {/* <LiftingState /> */}
+
+  <ToggleSwitch />
   </section>
   );
 };
