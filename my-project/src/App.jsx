@@ -7,7 +7,8 @@
 
 // import { DerivedState } from "./components/DericedState";
 // import { LiftingState } from "./components/LiftStateUp";
-import { ToggleSwitch } from "./components/projects/ToggleSwitch/ToggleSwitch";
+import { Todo } from "./components/projects/Todo/Todo";
+// import { ToggleSwitch } from "./components/projects/ToggleSwitch/ToggleSwitch";
 // import { State } from "./components/hooks/state";
 
 
@@ -24,7 +25,9 @@ export const App = () => {
   {/* <DerivedState /> */}
   {/* <LiftingState /> */}
 
-  <ToggleSwitch />
+  {/* <ToggleSwitch /> */}
+
+  <Todo />
   </section>
   );
 };
