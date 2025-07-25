@@ -7,9 +7,16 @@ export const Todo = () => {
     const [task,setTask] = useState([]);
     
     const handleFormSubmit =(inputValue) => {
-        if(!inputValue) return;
-        if(task.includes(inputValue)) return;
-        setTask((prev) => [...prev,inputValue]);
+        const {id,content,checked}=inputValue;
+        if(!content) return;
+        // if(task.includes(inputValue)) return;
+        const ifTodoContentMatched =task.find(
+            (curTask) => curTask.content===content
+        );
+        if(ifTodoContentMatched) return;
+        setTask((prev) => [...prev,
+            {id,content,checked}
+        ]);
     };
 
     //todo date time
@@ -20,7 +27,7 @@ export const Todo = () => {
     const handleDeleteTodo =(value) => {
         console.log(task);
         console.log(value);
-        const updateTask=task.filter((curTask) => curTask !== value);
+        const updateTask=task.filter((curTask) => curTask.content !== value);
         setTask(updateTask);
     };
 
@@ -28,6 +35,18 @@ export const Todo = () => {
 
     const handleClearButton =() => {
         setTask([]);
+    };
+
+    const handleCheckedTodo =(content) => {
+        const updateTask =task.map((curTask) => {
+            if(curTask.content === content){
+                return { ...curTask,checked:!curTask.checked};
+            }
+            else{
+                return curTask;
+            }
+        });
+        setTask(updateTask);
     };
     return <section className="todo-container">
         <header>
@@ -39,11 +58,14 @@ export const Todo = () => {
             <ul>
                 {
                     task.map((curTask,index)=>{
-                        return <TodoList
-                        key={index}
-                        data={curTask} 
+                        return (<TodoList
+                        key={curTask.id}
+                        data={curTask.content} 
+                        checked={curTask.checked}
                         onHandleDeleteTodo= {handleDeleteTodo}
-                        />;
+                        onHandleCheckedTodo={handleCheckedTodo}
+                        />
+                        ) ;
                     })
                 }
             </ul>
