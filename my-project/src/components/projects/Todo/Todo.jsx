@@ -3,8 +3,10 @@ import "./Todo.css";
 import { TodoForm } from "./TodoForm";
 import { TodoList } from "./TodoList";
 import { TodoDate } from "./TodoDate";
+import { getLocalStorage, setLocalStorage } from "./TodoLocalStorage";
+const todoKey= "reactTodo";
 export const Todo = () => {
-    const [task,setTask] = useState([]);
+    const [task,setTask] = useState(() => getLocalStorage());
     
     const handleFormSubmit =(inputValue) => {
         const {id,content,checked}=inputValue;
@@ -18,6 +20,8 @@ export const Todo = () => {
             {id,content,checked}
         ]);
     };
+
+    setLocalStorage(task);
 
     //todo date time
     
